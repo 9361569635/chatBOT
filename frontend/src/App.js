@@ -8,6 +8,9 @@ function App() {
   const messagesEndRef = useRef(null);
   const chatBoxRef = useRef(null); // Ref for chat box scrolling
 
+  // ✅ Use backend URL from environment variable or fallback
+  const backendURL = process.env.REACT_APP_BACKEND_URL || "https://chatbot-03tf.onrender.com";
+
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
 
@@ -16,7 +19,7 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/chat", {
+      const response = await fetch(`${backendURL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ description: input }),
@@ -51,21 +54,16 @@ function App() {
 
   return (
     <div className="chat-container">
-      <h2>📜 ChatBOT for Diseases</h2>
+      <h2>📜 AgroBot Chat</h2>
       <div className="chat-box" ref={chatBoxRef}>
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`message ${
-              msg.sender === "user" ? "user-message" : "bot-message"
-            }`}
+            className={`message ${msg.sender === "user" ? "user-message" : "bot-message"}`}
           >
             <span>{msg.text}</span>
             {msg.sender === "bot" && (
-              <button
-                className="copy-btn"
-                onClick={() => copyToClipboard(msg.text)}
-              >
+              <button className="copy-btn" onClick={() => copyToClipboard(msg.text)}>
                 ©️
               </button>
             )}
