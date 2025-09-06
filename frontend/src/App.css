@@ -1,0 +1,217 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body & Font */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #c8e6c9, #e8f5e9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Chat container */
+.chat-container {
+  width: 900px;
+  height: 600px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeSlideIn 0.8s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.chat-header {
+  background: #2e7d32;
+  color: white;
+  padding: 14px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Messages */
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f9fdf9;
+}
+
+/* Message bubbles */
+.message {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
+  animation: messagePop 0.4s ease;
+}
+
+@keyframes messagePop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #66bb6a;
+  color: white;
+  border-bottom-right-radius: 6px;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: #e8f5e9;
+  color: #000;
+  border-bottom-left-radius: 6px;
+  font-family: "Harlow Solid Italic", cursive; /* Unique bot font */
+}
+
+/* Copy button */
+.copy-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  font-size: 13px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #388e3c;
+  transition: transform 0.2s ease, color 0.3s;
+}
+.copy-btn:hover {
+  transform: scale(1.2);
+  color: #1b5e20;
+  animation: shine 1s infinite;
+}
+
+/* Shine effect for copy button */
+@keyframes shine {
+  0% { text-shadow: 0 0 2px #fff; }
+  50% { text-shadow: 0 0 10px #fff; }
+  100% { text-shadow: 0 0 2px #fff; }
+}
+
+/* Input area */
+.chat-input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-input {
+  display: flex;
+  padding: 12px;
+  background: #f1f8f2;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #c8e6c9;
+  border-radius: 12px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+.chat-input input:focus {
+  border-color: #2e7d32;
+  box-shadow: 0px 0px 6px rgba(46, 125, 50, 0.5);
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 12px 18px;
+  border: none;
+  background: #2e7d32;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background 0.3s;
+}
+.chat-input button:hover {
+  background: #1b5e20;
+  transform: scale(1.05);
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 70px;
+  padding: 10px 14px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50%;
+  background: #2e7d32;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, background 0.3s;
+}
+.scroll-top-btn:hover {
+  transform: scale(1.2);
+  background: #1b5e20;
+}
+
+/* Info footer */
+.info-footer {
+  background: #e8f5e9;
+  padding: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  border-top: 1px solid #c8e6c9;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
